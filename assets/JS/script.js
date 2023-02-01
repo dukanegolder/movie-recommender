@@ -192,4 +192,3 @@ function removeSidebar(pixelsUnder) {
 var pixelsUnder = window.matchMedia("(max-width: 751px)")
 removeSidebar(pixelsUnder)
 pixelsUnder.addListener(removeSidebar)
-
