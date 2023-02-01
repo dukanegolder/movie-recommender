@@ -1,14 +1,17 @@
-var APIkey = '2129d479a91cfa69f8540fc782cf615a';
-var card1Row1 = document.getElementById('card-1')
-var card2Row2 = document.getElementById('card-2')
-var card3Row3 = document.getElementById('card-3')
-var card4Row4 = document.getElementById('card-4')
-var card5Row5 = document.getElementById('card-5')
+// Defines apiKey variable
+var apiKey = '2129d479a91cfa69f8540fc782cf615a';
 
-// Defines getMovies function
-function getMovies() {
+// Defines element variables
+var container1El = document.getElementById("container1");
+var container2El = document.getElementById("container2");
+var optionEl = document.querySelectorAll(".option");
+var row2TitleEl = document.getElementById("row2Title");
+var top10El = document.getElementById("top10");
+
+// Defines topMovies function
+function topMovies() {
   // Gets data for movies now playing and sorts by popularity descending
-  fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=2129d479a91cfa69f8540fc782cf615a")
+  fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=" + apiKey)
   // Parses response
   .then(function (response) {
     return response.json();
@@ -22,6 +25,7 @@ function getMovies() {
     }
     for (i = 0; i < movieCards2El.children.length; i++) {
       movieCards2El.children[i].children[0].setAttribute("style", "background-image: url('https://image.tmdb.org/t/p/w500" + data.results[i + 5].poster_path + "');");
+
     }
   });
 }
@@ -51,10 +55,12 @@ Western - id: 37
 */
   
 // Defines variables for following functions
+
 var filteredResults = [];
 var page = 1;
 var pagesTotal = 50;
 var genreSelection = 10751
+
 
 
 
@@ -67,31 +73,61 @@ function clearFilter() {
     movieCards2El.children[i].children[0].setAttribute("style", "background-image: none;");
   }
   // Sets page back to 1
+
   page = 1;
+  // Runs getPage function
   getPage();
 }
 
 // Defines getPage function and makes it asynchronous
 async function getPage() {
-  // Gets a page of movie data sorted by popularity descending
-  var response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=2129d479a91cfa69f8540fc782cf615a&page=${page}`);
+  // Gets a page of data for movies now playing sorted by popularity descending
+  var response = await fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=" + apiKey + "&page=" + page);
   // Parses response into objects and arrays
-  var movies = await response.json();
+  var data = await response.json();
   // Parsed data is passed as the argument in the filterResults function
-  filterResults(movies);
-  // The getPage function runs again on the next page results until page 50
-  if (page < pagesTotal) {
-    page++;
-    getPage();
-  }
+  filterResults(data);
 }
   
 // Defines filterResults function
 function filterResults(data) {
-  // Pushes movies matching the selected genre to the filteredResults array
-  for (i = 0; i < 19; i++) {
-    if (data.results[i].genre_ids.includes(genreSelection)) {
-      filteredResults.push(data.results[i]);
+  // Checks for valid data
+  if (data.results) {
+    // Pushes movies matching the selected genre to the filteredResults array
+    for (i = 0; i < 19; i++) {
+      // Checks for valid results
+      if (!data.results[i]) {
+        // Sets second row of cards to display the posters of movies from the filtered results
+        for (i = 0; i < container2El.children[0].children.length; i++) {
+          container2El.children[0].children[i].children[0].setAttribute("style", "background-image: url('https://image.tmdb.org/t/p/original" + filteredResults[i].poster_path + "');");
+        }
+        return
+      }
+      else if (data.results[i].genre_ids.includes(genreSelection)) {
+        filteredResults.push(data.results[i]);
+      }
+    }
+    // Checks if length of filteredResults array is less than 5
+    if (filteredResults.length < 5) {
+      // Checks if current page is less than total pages
+      pagesTotal = data.total_pages;
+      if (page < pagesTotal) {
+        // Runs getPage function again for next page
+        page++;
+        getPage();
+      }
+      else {
+        // Sets second row of cards to display the posters of movies from the filtered results
+        for (i = 0; i < container2El.children[0].children.length; i++) {
+          container2El.children[0].children[i].children[0].setAttribute("style", "background-image: url('https://image.tmdb.org/t/p/original" + filteredResults[i].poster_path + "');");
+        }
+      }
+    }
+    else {
+      // Sets second row of cards to display the posters of movies from the filtered results
+      for (i = 0; i < container2El.children[0].children.length; i++) {
+        container2El.children[0].children[i].children[0].setAttribute("style", "background-image: url('https://image.tmdb.org/t/p/original" + filteredResults[i].poster_path + "');");
+      }
     }
   }
   // Logs filteredResults array to the console
@@ -150,10 +186,5 @@ function fetchTopRated () {
     card4Row4.innerHTML = card4Row4Content
     card5Row5.innerHTML = card5Row5Content
   })
+
 }
-
-
-
-
-
-fetchTopRated()

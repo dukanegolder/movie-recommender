@@ -6,14 +6,22 @@
 #map-button {
   background-color: rgb(128, 0, 0);
   position: fixed;
-  bottom: 10px;
-  right: 10px;
+  bottom: 2%;
+  right: 2%;
   z-index: 1;
 }
 
 #map {
   height: 300px;
   width: 100%;
+}
+
+.section1 {
+  padding-top: 10px;
+}
+
+.section-search {
+  padding-top: 7%;
 }
 
 #map-modal-window {
@@ -23,7 +31,7 @@
 /* Sidebar Styling */
 .sidenav {
   height: 100%;
-  width: 23%;
+  width: 20%;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -33,9 +41,14 @@
   padding-top: 25px;
 }
 
-/* footer {
-  background-color: #4a4949;
-} */
+footer {
+  width: 80%;
+  float: right;
+}
+
+footer p{
+  text-align: center;
+}
 
 .sidenav a,
 .dropdown-btn {
@@ -68,6 +81,10 @@
   margin-left: 5%;
   margin-bottom: 3%;
   background-color: #bfbebe;
+}
+
+#home{
+  color: black;
 }
 
 #myBtn {
@@ -104,14 +121,14 @@
 
 .card {
   border-radius: 30px;
-  margin-bottom: 120px;
+  margin-bottom: 50px;
   width: 28vw;
   height: 350px;
   min-width: 201px;
   background-size: contain;
 }
 
-.container1 {
+#container1 {
   display: flex;
   padding-right: 40px;
   justify-content: flex-end;
@@ -119,30 +136,40 @@
   margin-top: 100px;
 }
 
-.container2 {
+#container2 {
   display: flex;
   justify-content: flex-end;
   margin-left: 27vw;
 }
 
-.row-title1 {
+#containerSearch {
   display: flex;
-  position: relative;
-  left: 27vw;
-  height: 40px;
-  top: 5vh;
-  font-size: 1.8em;
-
+  justify-content: flex-end;
+  margin-left: 27vw;
 }
 
-.row-title2 {
+.rowTitle {
+  padding-left: 25%;
+  width: 80%;
+  float: right;
   display: flex;
   position: relative;
-  height: 40px;
-  left: 27vw;
-  bottom: 5vh;
+  /* left: 27vw; TODO */
+  /* height: 40px; */
   font-size: 1.8em;
+}
 
+#row1Title {
+  bottom: 5vh;
+}
+
+#row2Title {
+  bottom: 5vh;
+}
+
+#rowSearchTitle {
+  padding-top: 10px;
+  bottom: 2vh;
 }
 
 .column {
@@ -150,14 +177,20 @@
   max-width: 300px;
 }
 
+li {
+  list-style-type: none;
+}
+
 /* header CSS */
 
 nav {
+  width: 80%;
+  float: right;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 500px;
-  padding-right: 50px;
+  /* padding-left: 500px;  TODO*/
+  /* padding-right: 50px; TODO*/
   background-color: #4a4949;
   color: #f7f1f1;
   font-size: 25px;
@@ -179,6 +212,11 @@ nav {
   position: relative;
 }
 
+#home {
+  color: white;
+  font-weight: bold;
+}
+
 .nav-links li a::after {
   content: '';
   background: rgb(128, 0, 0);
@@ -194,17 +232,27 @@ nav {
   width: 100%;
 }
 
-/* @media screen and (max-width: 647px) {
-    
-    #map input {
-       width: 100px;
-    }
+.results {
+  font-weight: bold;
+  color: rgb(128, 0, 0);
+  padding-left: 25px;
 }
 
-@media screen and (max-width: 300px) {
-    #map {
-        width: 100%;
-    } */
+nav a {
+  padding-left: 15%;
+}
+
+/*Contact page*/
+
+.contact-info {
+  padding-top: 5%;
+  padding-left: 30%; 
+  
+} 
+
+.contact-name {
+  font-size: 40px;
+}
 
 @media (max-width: 768px) {
   .row-title1 {
@@ -220,14 +268,61 @@ nav {
   }
 }
 
-/*Contact page*/
+@media screen and (max-width: 1089px) {
+  nav {
+    font-size: 15px;
+  }
+}
 
-.contact-info {
-  padding-top: 5%;
-  padding-left: 30%; 
-  
-} 
+@media screen and (max-width: 1089px) {
+  nav {
+    font-size: 15px;
+  }
+}
 
-.contact-name {
-  font-size: 40px;
+@media screen and (max-width: 751px) {
+  nav, footer {
+    width: 100%;
+  }
+  #side-navigation-bar {
+    text-align: center;
+    background-color: #4A4949;
+  }
+  .dropdown-btn {
+    display: none;
+  }
+  #top10 {
+    display: none;
+  }
+  #contact {
+    display: none;
+  }
+  #side-navigation-bar li, #side-navigation-bar a {
+    color: white;
+  }
+  .results {
+    display: none;
+  }
+  .rowTitle {
+    float: none;
+    text-align: center;
+  }
+
+}
+
+@media screen and (max-width: 591px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+  }
+  nav a {
+    padding-top: 10px;
+    padding-left: 0;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  #map-button {
+    font-size: 12px;
+  }
 }

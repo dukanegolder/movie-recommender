@@ -17,7 +17,8 @@
     <!--Header-->
     <div class="header">
         <nav>
-            🎞️ Movie Recommender 🎞️
+
+            <a id="home" href="index.html">🎞️ Movie Recommender 🎞️ </a>
             <ul class="nav-links">
                 <li><a href="https://developers.google.com/maps/" target="_blank">Google API</a> </li>
                 <li><a href="https://www.themoviedb.org/documentation/api" target="_blank"> TMDB API</a> </li>
@@ -35,8 +36,8 @@
         </form>
           
         
-      <a id=topTen>Top 10</a>
-      <button class="dropdown-btn">Genres <i class="fa fa-caret-down"></i></button>
+      <a id=topTen href="index.html">Top 10</a>
+      <a id="genre" href="index.html"><button id="genres" class="dropdown-btn">Genres <i class="fa fa-caret-down"></i></button> </a>
       <div class="dropdown-container">
         <a id="action">Action</a>
         <a id="adventure">Adventure</a>
@@ -58,8 +59,8 @@
         <a id="war">War</a>
         <a id="western">Western</a>
       </div>
-      <a id=about href="#">About</a>
-      <a id=contact href="/index.html">Contact</a>
+      <a id=about href="#about-footer">About</a>
+      <a id=contact href="">Contact</a>
  
     </div> 
 
@@ -68,12 +69,12 @@
         <p class="contact-name">Devon Ethington</p>
             <ul class="contact-links">
                 <li><a href="https://github.com/Mersopolis" target="_blank">GitHub</a> </li>
-                <li><a href="mailto:dclarkjenkins87@gmail.com">Email</a></li>
+                <li><a href="mailto:mersopolis@gmail.com">mersopolis@gmail.com</a></li>
             </ul>
         <p class="contact-name">Mason Aviano</p>
             <ul class="contact-links">
                 <li><a href="https://github.com/Wodaloo" target="_blank">GitHub</a> </li>
-                <li><a href="mailto:dclarkjenkins87@gmail.com">Email</a></li>
+                <li><a href="mailto:masonaviano@icloud.com">masonaviano@icloud.com</a></li>
             </ul>
         <p class="contact-name">Daniel Jenkins</p>
             <ul class="contact-links">
@@ -83,25 +84,27 @@
         <p class="contact-name">Dukane Golder</p>
             <ul class="contact-links">
                 <li><a href="https://github.com/dukanegolder" target="_blank">GitHub</a> </li>
-                <li><a href="mailto:dclarkjenkins87@gmail.com">Email</a></li>
+                <li><a href="mailto:dukanegolder@gmail.com">dukanegolder@gmail.com</a></li>
             </ul>
         <p class="contact-name">Jackson Sheen</p>
             <ul class="contact-links">
                 <li><a href="https://github.com/JSheen98" target="_blank">GitHub</a> </li>
-                <li><a href="mailto:dclarkjenkins87@gmail.com">Email</a></li>
+                <li><a href="mailto:jsvlax33@gmail.com">jsvlax33@gmail.com</a></li>
             </ul>
 
 
     </div>
 
+    <footer id="about-footer" class="footer has-background-dark has-text-white">
+        <div class="content has-text-centered">
+            <p>
+                <strong class="has-text-white">🎞️ Movie Recommender 🎞️</strong> by Devon Ethington, Dukane Golder, Daniel Jenkins, Mason Aviano, and Jackson Sheen
+            </p>
+        </div>
+    </footer>
 
-    <!-- Script links -->
-     <script
-         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApfzRyHOsuR2emj4jpBPOvezNP1xFDm28&callback=initAutocomplete&libraries=places&v=weekly"
-        defer></script>
-    <script src="./assets/JS/tmdbapi.js"></script>
-    <script src="./assets/JS/googapi.js"></script>
-     <script src="./assets/JS/script.js"></script>
+
+    
 </body>
 
 </html>
